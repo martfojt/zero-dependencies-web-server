@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8080;
 // Create a new HTTP server
 const server = createServer();
 
+// Send a simple 'Hello, world!' response
 server.on('request', (request, response) => {
   response.end('Hello, world!');
 });
