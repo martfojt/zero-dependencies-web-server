@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { createServer } from 'node:http';
 
 // Set the server port from environment variable or default to 8080
@@ -15,3 +16,14 @@ server.on('request', (request, response) => {
 server.listen(PORT, () => {
   console.log(`starting server at port ${PORT}`);
 });
+
+createServer((request, response) => {
+  response.write('Hello');
+  response.write(', ');
+  response.write('World!');
+  response.end();
+}).listen(8080);
+
+createServer((request, response) => {
+  createReadStream(__filename).pipe(response);
+}).listen(8080);
